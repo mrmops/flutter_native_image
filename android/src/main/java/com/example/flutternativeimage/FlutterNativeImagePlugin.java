@@ -2,6 +2,8 @@ package com.example.flutternativeimage;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodChannel;
@@ -23,11 +25,11 @@ public class FlutterNativeImagePlugin implements FlutterPlugin {
 
   @Override
   public void onAttachedToEngine(FlutterPlugin.FlutterPluginBinding binding) {
-    setupChannel(binding.getFlutterEngine().getDartExecutor(), binding.getApplicationContext());
+    setupChannel(binding.getBinaryMessenger(), binding.getApplicationContext());
   }
 
   @Override
-  public void onDetachedFromEngine(FlutterPlugin.FlutterPluginBinding binding) {
+  public void onDetachedFromEngine(@NonNull FlutterPlugin.FlutterPluginBinding binding) {
     teardownChannel();
   }
 
